@@ -88,8 +88,22 @@ int pmrrr(char *jobz, char *range, int *np, double  *D_dbl,
 	  double *E_dbl, double *vl_dbl, double *vu_dbl, int *il,
 	  int *iu, int *tryracp, MPI_Comm comm, int *nzp,
 	  int *offsetp, double *W_dbl, double *Z, int *ldz,
-	  int *Zsupp)
+	  int *Zsupp,
+        char* matrix)
 {
+    //Create file handles, for matrix property output
+    char filename_cluster[100] = "";
+    char suffix_cluster[20] = "_cluster.dat";
+    strcat(filename_cluster, matrix);
+    strcat(filename_cluster, suffix_cluster);
+    file_cluster = fopen(filename_cluster, "w");
+    
+    char filename_singleton[100] = "";
+    char suffix_singleton[20] = "_singleton.dat";
+    strcat(filename_singleton, matrix);
+    strcat(filename_singleton, suffix_singleton);
+    file_singleton = fopen(filename_singleton, "w");
+    
   /* Input parameter */
   int         n      = *np;
   bool        onlyW  = (jobz[0]  == 'N' || jobz[0]  == 'n');
@@ -1029,6 +1043,7 @@ int PMR_comm_eigvals(MPI_Comm comm, int *nz, int *myfirstp, long double *W)
 
 
 /* Fortran function prototype */
+/*
 void pmrrr_(char *jobz, char *range, int *n, double  *D,
 	    double *E, double *vl, double *vu, int *il, int *iu,
 	    int *tryracp, MPI_Fint *comm, int *nz, int *myfirst,
@@ -1047,3 +1062,4 @@ void pmr_comm_eigvals_(MPI_Fint *comm, int *nz, int *myfirstp,
 
   *info = PMR_comm_eigvals(c_comm, nz, myfirstp, W);
 }
+*/

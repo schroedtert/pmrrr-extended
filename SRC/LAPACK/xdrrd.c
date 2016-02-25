@@ -12,6 +12,7 @@
 #define TRUE_ (1)
 #define FALSE_ (0)
 
+#define FUDGE 20.
 /* Table of constant values */
 static int c__1 = 1;
 static int c_n1 = -1;
@@ -552,8 +553,8 @@ int xdrrd_(char *range, char *order, int *n, long double *vl,
 /*           SPDIAM = GU - GL */
 /*           GL = GL - FUDGE*SPDIAM*EPS*IN - FUDGE*PIVMIN */
 /*           GU = GU + FUDGE*SPDIAM*EPS*IN + FUDGE*PIVMIN */
-	    gl = gl - tnorm * 2. * eps * in - *pivmin * 2.;
-	    gu = gu + tnorm * 2. * eps * in + *pivmin * 2.;
+	    gl = gl - tnorm * FUDGE * eps * in - *pivmin * FUDGE;
+	    gu = gu + tnorm * FUDGE * eps * in + *pivmin * FUDGE;
 
 	    if (irange > 1) {
 		if (gu < *wl) {

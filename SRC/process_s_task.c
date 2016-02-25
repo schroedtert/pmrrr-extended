@@ -113,6 +113,11 @@ int PMR_process_s_task(singleton_t *sng, int tid, proc_t *procinfo,
 
   /* loop over all singletons in the task */
   for (i=begin; i<=end; i++) {
+        // Singleton output
+        fprintf(file_singleton,
+                "%d %d %d %d %d %13.5f %13.5f\n",
+                sng->begin, sng->end, sng->depth, sng->bl_begin,
+                sng->bl_end, sng->bl_spdiam, sng->lgap);
 
     /* check if eigenvector is supposed to be computed by
      * the process */

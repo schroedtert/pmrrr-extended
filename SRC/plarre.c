@@ -525,9 +525,10 @@ int eigval_approx_proc(proc_t *procinfo, int ifirst, int ilast,
   } else {
     /* no multithreaded computation */
     
-    xdrrd_("I", "B", &n, &dummy, &dummy, &ifirst, &ilast, gersch,
+    xdrrd_("A", "B", &n, &dummy, &dummy, &ifirst, &ilast, gersch,
   	    &bsrtol, D, E, E2, &pivmin, &nsplit, isplit, &m, W, Werr,
   	    &wl, &wu, iblock, Windex, work, iwork, &info);
+    printf("xdrrd_: %d\n", info);
     assert(info == 0);
     assert(m == ilast-ifirst+1);
   }

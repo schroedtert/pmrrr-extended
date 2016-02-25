@@ -94,6 +94,11 @@ int PMR_process_c_task(cluster_t *cl, int tid, proc_t *procinfo,
 		       tol_t *tolstruct, workQ_t *workQ, 
 		       counter_t *num_left, long double *work, int *iwork)
 {
+    // Cluster output
+    fprintf(file_cluster,
+                "%d %d %d %d %d %13.5f %13.5f\n",
+                cl->begin, cl->end, cl->depth, cl->bl_begin,
+                cl->bl_end, cl->bl_spdiam, cl->lgap);
   /* From inputs */
   int   depth      = cl->depth;
   int   left_pid   = cl->left_pid;
