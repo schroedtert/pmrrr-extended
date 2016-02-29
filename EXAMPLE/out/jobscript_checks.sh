@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-#BSUB -J "ExtMatrixProperties[1-18]"    # job name
+#BSUB -J "MClusterExt[1-18]"    # job name
 #BSUB -o SiSc%J.%I.cout # job output 
 #BSUB -W 00:45          # limits in hours:minutes
 #BSUB -M 20000           # memory in MB
-#BSUB -P aices2          # use lecture queue
+#BSUB -P aices          # use lecture queue
 #BSUB -n 1
 #BSUB -R model==SandyBridge_EP
 
@@ -14,8 +14,6 @@ module switch intel intel/16.0
 module switch openmpi intelmpi
 module load cmake
 module load python
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/ts193246/SiScLabPmrrr/pmrrrExtOutput/EXAMPLES
 
 ### which one array job is this?
 echo LSB_JOBINDEX: $LSB_JOBINDEX

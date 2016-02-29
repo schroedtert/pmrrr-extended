@@ -11,8 +11,8 @@ LDFLAGS  = -D_THREAD_SAFE=1 -pthread
 # multithreading
 MPIFLAGS = -mt_mpi
 
-INCPATH = ../../INCLUDE
-LIBPATH = ../../LIB
+INCPATH = ../INCLUDE
+LIBPATH = ../LIB
 LIBS = pmrrr ifcore pthread rt imf m
 
 
